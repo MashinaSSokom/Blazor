@@ -1,0 +1,48 @@
+﻿@page "/"
+
+<div class="row">
+    <div class="col text-center">
+        <h1>Welcome to our Game Industr Page</h1>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col text-center">
+        <h2>Show all game in MOCK Database</h2>
+    </div>
+</div>
+
+<GameListTable  Games="games"/> 
+
+<IndividualGame Game="games[0]" IsTable="false" DisplayButtons="true"/>
+
+@code {
+
+    List<Game> games;
+
+    protected override void  OnInitialized()
+    {
+        games = new List<Game>()
+        {
+            new Game() 
+            {
+                Name = "Farming Simulator 2019",
+                Genre = "Simulator",
+                ReleaseDate = new DateTime(2018, 11, 19)
+            },
+            new Game() 
+            {
+                Name = "The Witcher 3",
+                Genre = "Action/RPG",
+                ReleaseDate = new DateTime(2015, 05, 18)
+            },
+            new Game()
+            {
+                Name = "Destroy All Humans!",
+                Genre = "Action-Adventure",
+                ReleaseDate = new DateTime(2020, 07, 28)
+            },
+        };
+    }
+}

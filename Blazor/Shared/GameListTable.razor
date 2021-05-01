@@ -1,0 +1,42 @@
+﻿<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+                <th><input type="checkbox" @onchange="(() => displaybuttons = !displaybuttons)" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Games== null)
+            {
+                <tr>LOADING DATA...</tr>
+            }
+            else if (Games.Count == 0)
+            {
+                <tr>NO ITEMS IN ARRAY</tr>
+            }
+            else
+            {
+                @foreach (var item in Games)
+                {
+                    @*<tr>
+                        <td>@item.name</td>
+                        <td>@item.genre</td>
+                        <td>@item.releasedate.tostring("dd.mm.yyyy")</td>
+                    </tr>*@
+                    <IndividualGame Game="item" IsTable="true" DisplayButtons="displaybuttons"/>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    [Parameter] public List<Game> Games { get; set; }
+
+    bool displaybuttons = false;
+
+}
